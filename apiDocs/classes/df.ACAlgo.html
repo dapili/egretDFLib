@@ -1,0 +1,1268 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ACAlgo | DF</title>
+	<meta name="description" content="Documentation for DF">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">DF</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">DF</a>
+				</li>
+				<li>
+					<a href="../modules/df.html">df</a>
+				</li>
+				<li>
+					<a href="df.ACAlgo.html">ACAlgo</a>
+				</li>
+			</ul>
+			<h1>Class ACAlgo</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>4*4斗兽棋算法</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">ac</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #795E26">ACAlgo</span><span style="color: #000000">();</span>
+<span style="color: #001080">ac</span><span style="color: #000000">.</span><span style="color: #795E26">initGrids</span><span style="color: #000000">();</span>
+
+<span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #001080">EventBus</span><span style="color: #000000">.</span><span style="color: #001080">instance</span><span style="color: #000000">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000">(</span><span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #001080">ACAlgo</span><span style="color: #000000">.</span><span style="color: #0070C1">FLOP</span><span style="color: #000000">, </span><span style="color: #001080">flop</span><span style="color: #000000">, </span><span style="color: #0000FF">this</span><span style="color: #000000">);</span>
+<span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #001080">EventBus</span><span style="color: #000000">.</span><span style="color: #001080">instance</span><span style="color: #000000">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000">(</span><span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #001080">ACAlgo</span><span style="color: #000000">.</span><span style="color: #0070C1">EATING</span><span style="color: #000000">, </span><span style="color: #001080">eat</span><span style="color: #000000">, </span><span style="color: #0000FF">this</span><span style="color: #000000">);</span>
+<span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #001080">EventBus</span><span style="color: #000000">.</span><span style="color: #001080">instance</span><span style="color: #000000">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000">(</span><span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #001080">ACAlgo</span><span style="color: #000000">.</span><span style="color: #0070C1">MOVE</span><span style="color: #000000">, </span><span style="color: #001080">move</span><span style="color: #000000">, </span><span style="color: #0000FF">this</span><span style="color: #000000">);</span>
+<span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #001080">EventBus</span><span style="color: #000000">.</span><span style="color: #001080">instance</span><span style="color: #000000">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000">(</span><span style="color: #001080">df</span><span style="color: #000000">.</span><span style="color: #001080">ACAlgo</span><span style="color: #000000">.</span><span style="color: #0070C1">WIN</span><span style="color: #000000">, </span><span style="color: #001080">win</span><span style="color: #000000">, </span><span style="color: #0000FF">this</span><span style="color: #000000">);</span>
+
+<span style="color: #795E26">flop</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">) {</span><span style="color: #001080">ac</span><span style="color: #000000">.</span><span style="color: #795E26">flop</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">);}</span>
+<span style="color: #795E26">eat</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">) {</span><span style="color: #001080">ac</span><span style="color: #000000">.</span><span style="color: #795E26">eat</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">);}</span>
+<span style="color: #795E26">move</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">) {</span><span style="color: #001080">ac</span><span style="color: #000000">.</span><span style="color: #795E26">move</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">);}</span>
+<span style="color: #795E26">win</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">) {</span><span style="color: #001080">ac</span><span style="color: #000000">.</span><span style="color: #795E26">win</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">);}</span>
+
+<span style="color: #001080">ac</span><span style="color: #000000">.</span><span style="color: #795E26">auto</span><span style="color: #000000">(</span><span style="color: #098658">0</span><span style="color: #000000">);</span>
+<span style="color: #001080">ac</span><span style="color: #000000">.</span><span style="color: #795E26">auto</span><span style="color: #000000">(</span><span style="color: #098658">1</span><span style="color: #000000">);</span>
+</code></pre>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ACAlgo</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="df.ACAlgo.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_animalNames" class="tsd-kind-icon">_animal<wbr>Names</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_camp" class="tsd-kind-icon">_camp</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_canRun" class="tsd-kind-icon">_can<wbr>Run</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_failMax" class="tsd-kind-icon">_fail<wbr>Max</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_failSteps" class="tsd-kind-icon">_fail<wbr>Steps</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_tieMax" class="tsd-kind-icon">_tie<wbr>Max</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_tieSteps" class="tsd-kind-icon">_tie<wbr>Steps</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_valueRun" class="tsd-kind-icon">_value<wbr>Run</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_winMax" class="tsd-kind-icon">_win<wbr>Max</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#_winSteps" class="tsd-kind-icon">_win<wbr>Steps</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="df.ACAlgo.html#grids" class="tsd-kind-icon">grids</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="df.ACAlgo.html#EATING" class="tsd-kind-icon">EATING</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="df.ACAlgo.html#FLOP" class="tsd-kind-icon">FLOP</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="df.ACAlgo.html#MOVE" class="tsd-kind-icon">MOVE</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="df.ACAlgo.html#WIN" class="tsd-kind-icon">WIN</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#action" class="tsd-kind-icon">action</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#auto" class="tsd-kind-icon">auto</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#checkRoundVS" class="tsd-kind-icon">check<wbr>RoundVS</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#checkVSR" class="tsd-kind-icon">checkVSR</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#chessRun" class="tsd-kind-icon">chess<wbr>Run</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#dangerous" class="tsd-kind-icon">dangerous</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#eat" class="tsd-kind-icon">eat</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#eatXy" class="tsd-kind-icon">eat<wbr>Xy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#flop" class="tsd-kind-icon">flop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#flopXy" class="tsd-kind-icon">flop<wbr>Xy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#getAnimalName" class="tsd-kind-icon">get<wbr>Animal<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#getGrid" class="tsd-kind-icon">get<wbr>Grid</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#getMoveDirs" class="tsd-kind-icon">get<wbr>Move<wbr>Dirs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#hasAsk" class="tsd-kind-icon">has<wbr>Ask</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#initGrids" class="tsd-kind-icon">init<wbr>Grids</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#isFloped" class="tsd-kind-icon">is<wbr>Floped</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#isInQueue" class="tsd-kind-icon">is<wbr>InQueue</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#move" class="tsd-kind-icon">move</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#moveRandom" class="tsd-kind-icon">move<wbr>Random</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#moveXy" class="tsd-kind-icon">move<wbr>Xy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#print" class="tsd-kind-icon">print</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#selectRoundGrid" class="tsd-kind-icon">select<wbr>Round<wbr>Grid</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="df.ACAlgo.html#win" class="tsd-kind-icon">win</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="df.ACAlgo.html#winFailArr" class="tsd-kind-icon">win<wbr>Fail<wbr>Arr</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new ACAlgo<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="df.ACAlgo.html" class="tsd-signature-type" data-tsd-kind="Class">ACAlgo</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:22</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="df.ACAlgo.html" class="tsd-signature-type" data-tsd-kind="Class">ACAlgo</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_animalNames" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _animal<wbr>Names</h3>
+					<div class="tsd-signature tsd-kind-icon">_animal<wbr>Names<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:87</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_camp" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _camp</h3>
+					<div class="tsd-signature tsd-kind-icon">_camp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:101</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_canRun" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _can<wbr>Run</h3>
+					<div class="tsd-signature tsd-kind-icon">_can<wbr>Run<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:386</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_failMax" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _fail<wbr>Max</h3>
+					<div class="tsd-signature tsd-kind-icon">_fail<wbr>Max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:99</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_failSteps" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _fail<wbr>Steps</h3>
+					<div class="tsd-signature tsd-kind-icon">_fail<wbr>Steps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:96</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_tieMax" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _tie<wbr>Max</h3>
+					<div class="tsd-signature tsd-kind-icon">_tie<wbr>Max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:100</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_tieSteps" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _tie<wbr>Steps</h3>
+					<div class="tsd-signature tsd-kind-icon">_tie<wbr>Steps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:97</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_valueRun" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _value<wbr>Run</h3>
+					<div class="tsd-signature tsd-kind-icon">_value<wbr>Run<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:385</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_winMax" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _win<wbr>Max</h3>
+					<div class="tsd-signature tsd-kind-icon">_win<wbr>Max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:98</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_winSteps" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _win<wbr>Steps</h3>
+					<div class="tsd-signature tsd-kind-icon">_win<wbr>Steps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:95</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="grids" class="tsd-anchor"></a>
+					<h3>grids</h3>
+					<div class="tsd-signature tsd-kind-icon">grids<span class="tsd-signature-symbol">:</span> <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:28</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>棋盘数据，可按长度16成4*4行列设置</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="EATING" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> EATING</h3>
+					<div class="tsd-signature tsd-kind-icon">EATING<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;acalgo_eating&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:303</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="FLOP" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> FLOP</h3>
+					<div class="tsd-signature tsd-kind-icon">FLOP<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;acalgo_flop&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:305</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="MOVE" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> MOVE</h3>
+					<div class="tsd-signature tsd-kind-icon">MOVE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;acalgo_move&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:304</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="WIN" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> WIN</h3>
+					<div class="tsd-signature tsd-kind-icon">WIN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;acalgo_win&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in animalChess/ACAlgo.ts:306</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="action" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> action</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">action<span class="tsd-signature-symbol">(</span>opt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ACCampOpt</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:308</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>opt: <span class="tsd-signature-type">ACCampOpt</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="auto" class="tsd-anchor"></a>
+					<h3>auto</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">auto<span class="tsd-signature-symbol">(</span>camp<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:107</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>自动下棋，双方皆可</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>camp: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>0代表我方，1代表对方</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="checkRoundVS" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> check<wbr>RoundVS</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>RoundVS<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:576</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>判断本局胜负</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="checkVSR" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> checkVSR</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">checkVSR<span class="tsd-signature-symbol">(</span>me<span class="tsd-signature-symbol">: </span><a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a>, enemy<span class="tsd-signature-symbol">: </span><a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ACChessVS</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:239</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>me: <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></h5>
+								</li>
+								<li>
+									<h5>enemy: <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ACChessVS</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="chessRun" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> chess<wbr>Run</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">chess<wbr>Run<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:387</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="dangerous" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> dangerous</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">dangerous<span class="tsd-signature-symbol">(</span>me<span class="tsd-signature-symbol">: </span><a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:476</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>me: <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="eat" class="tsd-anchor"></a>
+					<h3>eat</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">eat<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:361</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>吃子</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="eatXy" class="tsd-anchor"></a>
+					<h3>eat<wbr>Xy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">eat<wbr>Xy<span class="tsd-signature-symbol">(</span>eating<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span>, eated<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:726</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>吃子</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eating: <span class="tsd-signature-symbol">{ </span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5>eated: <span class="tsd-signature-symbol">{ </span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="flop" class="tsd-anchor"></a>
+					<h3>flop</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">flop<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:514</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>翻子</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="flopXy" class="tsd-anchor"></a>
+					<h3>flop<wbr>Xy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">flop<wbr>Xy<span class="tsd-signature-symbol">(</span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:715</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>翻子</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>gridX: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>gridY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getAnimalName" class="tsd-anchor"></a>
+					<h3>get<wbr>Animal<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Animal<wbr>Name<span class="tsd-signature-symbol">(</span>num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:88</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>num: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getGrid" class="tsd-anchor"></a>
+					<h3>get<wbr>Grid</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Grid<span class="tsd-signature-symbol">(</span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:751</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>取子</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>gridX: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>gridY: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getMoveDirs" class="tsd-anchor"></a>
+					<h3>get<wbr>Move<wbr>Dirs</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Move<wbr>Dirs<span class="tsd-signature-symbol">(</span>chess<span class="tsd-signature-symbol">: </span><a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/df.ACGridWay.html" class="tsd-signature-type" data-tsd-kind="Enumeration">ACGridWay</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:698</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>获得棋子可走方向</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>chess: <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../enums/df.ACGridWay.html" class="tsd-signature-type" data-tsd-kind="Enumeration">ACGridWay</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="hasAsk" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> has<wbr>Ask</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Ask<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:292</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>还有未翻的牌，尚有？号</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="initGrids" class="tsd-anchor"></a>
+					<h3>init<wbr>Grids</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">init<wbr>Grids<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:33</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>初始化随机棋盘</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="isFloped" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> is<wbr>Floped</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Floped<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:277</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>是否开过牌，全是？号</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="isInQueue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> is<wbr>InQueue</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>InQueue<span class="tsd-signature-symbol">(</span>enemy<span class="tsd-signature-symbol">: </span><a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a>, me<span class="tsd-signature-symbol">: </span><a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a>, arr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:259</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>enemy: <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></h5>
+								</li>
+								<li>
+									<h5>me: <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></h5>
+								</li>
+								<li>
+									<h5>arr: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="move" class="tsd-anchor"></a>
+					<h3>move</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">move<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:496</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>移动</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="moveRandom" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> move<wbr>Random</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">move<wbr>Random<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:526</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>任走一步安全路线，若安全路线无，依然任走一步</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="moveXy" class="tsd-anchor"></a>
+					<h3>move<wbr>Xy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">move<wbr>Xy<span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span>, target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:738</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>移动</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>src: <span class="tsd-signature-symbol">{ </span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5>target: <span class="tsd-signature-symbol">{ </span>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>gridX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>gridY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="print" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> print</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">print<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:59</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="selectRoundGrid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> select<wbr>Round<wbr>Grid</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">select<wbr>Round<wbr>Grid<span class="tsd-signature-symbol">(</span>chess<span class="tsd-signature-symbol">: </span><a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:451</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>chess: <a href="df.ACGrid.html" class="tsd-signature-type" data-tsd-kind="Class">ACGrid</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="win" class="tsd-anchor"></a>
+					<h3>win</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">win<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:683</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>输出结果胜负</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>event.data.win表胜利方 -1平局</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="winFailArr" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> win<wbr>Fail<wbr>Arr</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">win<wbr>Fail<wbr>Arr<span class="tsd-signature-symbol">(</span>enemy<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, me<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, win<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fail<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, tie<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in animalChess/ACAlgo.ts:207</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>enemy: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>me: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>win: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>fail: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>tie: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class="current tsd-kind-namespace">
+						<a href="../modules/df.html">df</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-namespace">
+						<a href="../enums/df.ACGridWay.html" class="tsd-kind-icon">ACGrid<wbr>Way</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.ACAlgo.html" class="tsd-kind-icon">ACAlgo</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_animalNames" class="tsd-kind-icon">_animal<wbr>Names</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_camp" class="tsd-kind-icon">_camp</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_canRun" class="tsd-kind-icon">_can<wbr>Run</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_failMax" class="tsd-kind-icon">_fail<wbr>Max</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_failSteps" class="tsd-kind-icon">_fail<wbr>Steps</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_tieMax" class="tsd-kind-icon">_tie<wbr>Max</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_tieSteps" class="tsd-kind-icon">_tie<wbr>Steps</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_valueRun" class="tsd-kind-icon">_value<wbr>Run</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_winMax" class="tsd-kind-icon">_win<wbr>Max</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#_winSteps" class="tsd-kind-icon">_win<wbr>Steps</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#grids" class="tsd-kind-icon">grids</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="df.ACAlgo.html#EATING" class="tsd-kind-icon">EATING</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="df.ACAlgo.html#FLOP" class="tsd-kind-icon">FLOP</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="df.ACAlgo.html#MOVE" class="tsd-kind-icon">MOVE</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="df.ACAlgo.html#WIN" class="tsd-kind-icon">WIN</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#action" class="tsd-kind-icon">action</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#auto" class="tsd-kind-icon">auto</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#checkRoundVS" class="tsd-kind-icon">check<wbr>RoundVS</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#checkVSR" class="tsd-kind-icon">checkVSR</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#chessRun" class="tsd-kind-icon">chess<wbr>Run</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#dangerous" class="tsd-kind-icon">dangerous</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#eat" class="tsd-kind-icon">eat</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#eatXy" class="tsd-kind-icon">eat<wbr>Xy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#flop" class="tsd-kind-icon">flop</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#flopXy" class="tsd-kind-icon">flop<wbr>Xy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#getAnimalName" class="tsd-kind-icon">get<wbr>Animal<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#getGrid" class="tsd-kind-icon">get<wbr>Grid</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#getMoveDirs" class="tsd-kind-icon">get<wbr>Move<wbr>Dirs</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#hasAsk" class="tsd-kind-icon">has<wbr>Ask</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#initGrids" class="tsd-kind-icon">init<wbr>Grids</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#isFloped" class="tsd-kind-icon">is<wbr>Floped</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#isInQueue" class="tsd-kind-icon">is<wbr>InQueue</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#move" class="tsd-kind-icon">move</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#moveRandom" class="tsd-kind-icon">move<wbr>Random</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#moveXy" class="tsd-kind-icon">move<wbr>Xy</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#print" class="tsd-kind-icon">print</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#selectRoundGrid" class="tsd-kind-icon">select<wbr>Round<wbr>Grid</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="df.ACAlgo.html#win" class="tsd-kind-icon">win</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="df.ACAlgo.html#winFailArr" class="tsd-kind-icon">win<wbr>Fail<wbr>Arr</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.ACGrid.html" class="tsd-kind-icon">ACGrid</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.ArrayUtil.html" class="tsd-kind-icon">Array<wbr>Util</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.BubbleAlgo.html" class="tsd-kind-icon">Bubble<wbr>Algo</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.BubbleRay.html" class="tsd-kind-icon">Bubble<wbr>Ray</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.CCDUtil.html" class="tsd-kind-icon">CCDUtil</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.CameraY.html" class="tsd-kind-icon">CameraY</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.CollisionUtil.html" class="tsd-kind-icon">Collision<wbr>Util</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.EventBus.html" class="tsd-kind-icon">Event<wbr>Bus</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.FallWrapper.html" class="tsd-kind-icon">Fall<wbr>Wrapper</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.GameSound.html" class="tsd-kind-icon">Game<wbr>Sound</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.H5Sound.html" class="tsd-kind-icon">H5<wbr>Sound</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.HttpUtil.html" class="tsd-kind-icon">Http<wbr>Util</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.ImgUtil.html" class="tsd-kind-icon">Img<wbr>Util</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.LoopY.html" class="tsd-kind-icon">LoopY</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.MathUtil.html" class="tsd-kind-icon">Math<wbr>Util</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.PSAlgo.html" class="tsd-kind-icon">PSAlgo</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.PSGrid.html" class="tsd-kind-icon">PSGrid</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.Pool.html" class="tsd-kind-icon">Pool</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.Quadtree.html" class="tsd-kind-icon">Quadtree</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.StringUtil.html" class="tsd-kind-icon">String<wbr>Util</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.TestComponent.html" class="tsd-kind-icon">Test<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.TestUI.html" class="tsd-kind-icon">TestUI</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.TimeUtil.html" class="tsd-kind-icon">Time<wbr>Util</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="df.ToolUtil.html" class="tsd-kind-icon">Tool<wbr>Util</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="../interfaces/df.BubbleInterface.html" class="tsd-kind-icon">Bubble<wbr>Interface</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

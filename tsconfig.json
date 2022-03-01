@@ -1,0 +1,11 @@
+{
+	"compilerOptions": {
+		"target": "ES6",
+		"outFile": "bin/df.js",
+		"declaration": true
+	},
+	"include": [
+		"libs",
+		"src"
+	]
+}

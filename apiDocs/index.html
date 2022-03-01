@@ -1,0 +1,157 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>DF</title>
+	<meta name="description" content="Documentation for DF">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">DF</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>DF</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#df-egret-第三方库" id="df-egret-第三方库" style="color: inherit; text-decoration: none;">
+					<h1>df egret 第三方库</h1>
+				</a>
+				<a href="#特点" id="特点" style="color: inherit; text-decoration: none;">
+					<h3>特点</h3>
+				</a>
+				<ol>
+					<li>ts语言，完善的代码提示.</li>
+					<li>不引入第三方组件，独立使用无依赖.</li>
+					<li>符合egret官方标准，接入简单.</li>
+					<li>独立命名空间，避免命名冲突.  </li>
+				</ol>
+				<a href="#功能" id="功能" style="color: inherit; text-decoration: none;">
+					<h3>功能</h3>
+				</a>
+				<ol>
+					<li>提供常用游戏工具类，如对象池</li>
+					<li>...</li>
+				</ol>
+				<a href="#接入流程" id="接入流程" style="color: inherit; text-decoration: none;">
+					<h3>接入流程</h3>
+				</a>
+				<ol>
+					<li><p>打开egret项目在libs文件夹下新建df文件夹，放入<strong>df.d.ts</strong>, <strong>df.ts</strong>, <strong>df.min.js</strong>文件<br><img src="readme/egret1.PNG" alt="图1" title="图1"></p>
+					</li>
+					<li><p>打开egretProperties.json添加df,如下图配置<br><img src="readme/egret2.PNG" alt="图2" title="图2"></p>
+					</li>
+				</ol>
+				<a href="#使用示例" id="使用示例" style="color: inherit; text-decoration: none;">
+					<h3>使用示例</h3>
+				</a>
+				<ol>
+					<li>代码示例<br><img src="readme/egret3.PNG" alt="图3" title="图3"></li>
+					<li>打印输出<br><img src="readme/egret4.jpg" alt="图3" title="图3"></li>
+				</ol>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h3>API</h3>
+				</a>
+				<p><a href="modules/df.html">---&gt;&gt;&gt;api doc&lt;&lt;&lt;---</a><br>所有api皆在df命名空间下，见下面调用示例：</p>
+				<p><em>类</em><br><code>Pool</code>  单例方法<br>调用示例<br><code>df.Pool.instance.debug()</code><br><em>属性</em><br><code>无</code><br><em>方法</em>  </p>
+				<pre><code><span style="color: #000000">        </span><span style="color: #008000">/**</span>
+<span style="color: #008000">         * 拿取对象</span>
+<span style="color: #008000">         * </span><span style="color: #0000FF">@param</span><span style="color: #008000"> </span><span style="color: #001080">cls</span><span style="color: #008000"> 类名，非实例</span>
+<span style="color: #008000">         */</span>
+<span style="color: #000000">        </span><span style="color: #795E26">getFrom</span><span style="color: #000000">(</span><span style="color: #001080">cls</span><span style="color: #000000">: </span><span style="color: #001080">any</span><span style="color: #000000">): </span><span style="color: #001080">any</span><span style="color: #000000">;</span>
+
+<span style="color: #000000">        </span><span style="color: #008000">/**</span>
+<span style="color: #008000">         * 归还对象</span>
+<span style="color: #008000">         * </span><span style="color: #0000FF">@param</span><span style="color: #008000"> </span><span style="color: #001080">instance</span><span style="color: #008000"> 实例，非类名</span>
+<span style="color: #008000">         */</span>
+<span style="color: #000000">        </span><span style="color: #795E26">backTo</span><span style="color: #000000">(</span><span style="color: #001080">instance</span><span style="color: #000000">: </span><span style="color: #001080">any</span><span style="color: #000000">): </span><span style="color: #0000FF">void</span><span style="color: #000000">;</span>
+
+<span style="color: #000000">        </span><span style="color: #008000">/**</span>
+<span style="color: #008000">         * 清空整个对象池</span>
+<span style="color: #008000">         */</span>
+<span style="color: #000000">        </span><span style="color: #795E26">clear</span><span style="color: #000000">(): </span><span style="color: #0000FF">void</span><span style="color: #000000">;</span>
+
+<span style="color: #000000">        </span><span style="color: #008000">/**</span>
+<span style="color: #008000">         * 测试，对象池打印</span>
+<span style="color: #008000">         */</span>
+<span style="color: #000000">        </span><span style="color: #795E26">debug</span><span style="color: #000000">(): </span><span style="color: #0000FF">void</span><span style="color: #000000">;</span>
+
+</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/df.html">df</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
